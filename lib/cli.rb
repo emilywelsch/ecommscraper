@@ -12,11 +12,11 @@ class CLI
     puts "                "
     puts "***------------- ·÷±‡± Welcome to EcommScraper ±‡±÷· -------------***".colorize(:blue)
     puts "                "
-    continent_list
+    site_list
   end
 
   def site_list
-    sites = ["Pixi Cycling", "Store 2", "Store 3", "Store 4", "Store 5", "Store 6"]
+    sites = ["Pixi Cycling", "Store 2", "Store 3", "Store 4", "Store 5", "All of the above"]
     puts "Which store would you like to shop? (Enter number or exit)".colorize(:blue)
       sites.each.with_index(1) do |site, i|
         puts "#{i}. #{site}"
@@ -28,7 +28,7 @@ class CLI
   def which_store?
     case user_input = gets.chomp
       when "exit"
-        puts "Safe travels!".colorize(:blue)
+        puts "See you next time!".colorize(:blue)
         exit
       when "1", "2", "3", "4", "5", "6"
         list(user_input)
@@ -49,7 +49,7 @@ class CLI
 
   def make_items
     items_array = Scraper.scrape_items
-    Item.create_item(items_array)
+    # Item.create_item(items_array)
   end
 
   def add_attributes_to_items
