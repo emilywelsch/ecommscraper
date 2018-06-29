@@ -6,6 +6,7 @@ require_relative '../lib/item.rb'
 
 
 class Scraper
+  attr_accessor :name, :url
 
   def self.scrape_items
     # items = [{:name=>"Ride and Rec Legging", :item_details=>"A paragraph of information.", :testimonials=>"A paragraph of information."}]
@@ -18,7 +19,7 @@ class Scraper
 
   def self.scrape_pixi
     doc = Nokogiri::HTML(open("https://www.pixicycling.com/"))
-      item = self.new
+      # item = self.new
       item.name = doc.css('div h2')
       item.url = doc.css('a').attr('href').value
 
